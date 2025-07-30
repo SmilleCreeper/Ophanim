@@ -52,7 +52,7 @@ def memory_efficient_generate(model, tokenizer, prompt, max_length=50, temperatu
                 
             generated = torch.cat([generated, next_token], dim=1)
     
-    return tokenizer.decode(generated[0], skip_special_tokens=True)
+    return tokenizer.decode(generated[0], skip_special_tokens=False)
 
 def batch_generate(model, tokenizer, prompts, max_length=50, temperature=0.8, device=None):
     """
