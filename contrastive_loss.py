@@ -30,7 +30,7 @@ def optimized_contrastive_loss(model, positive_ids, negative_ids_list, tokenizer
         pos_logits = model(positive_ids.unsqueeze(0))
         targets = positive_ids[1:].contiguous()
         logits_for_loss = pos_logits[0, :-1, :].contiguous()
-        return nn.CrossEntropyLoss(ignore_index=pad_token_id)(
+        return nn.CrossEntropyLoss()(
             logits_for_loss.view(-1, logits_for_loss.size(-1)),
             targets.view(-1)
         ), 0.0, 0.0
@@ -40,7 +40,7 @@ def optimized_contrastive_loss(model, positive_ids, negative_ids_list, tokenizer
     pos_targets = positive_ids[1:].contiguous()
     pos_logits_for_loss = pos_logits[0, :-1, :].contiguous()
     
-    pos_loss = nn.CrossEntropyLoss(ignore_index=pad_token_id)(
+    pos_loss = nn.CrossEntropyLoss()(
         pos_logits_for_loss.view(-1, pos_logits_for_loss.size(-1)),
         pos_targets.view(-1)
     )
@@ -66,7 +66,7 @@ def optimized_contrastive_loss(model, positive_ids, negative_ids_list, tokenizer
             if valid_len > 1:
                 neg_targets = neg_ids[1:valid_len].contiguous()
                 neg_logits_for_loss = neg_logits[j, :valid_len-1, :].contiguous()
-                neg_loss = nn.CrossEntropyLoss(ignore_index=pad_token_id)(
+                neg_loss = nn.CrossEntropyLoss()(
                     neg_logits_for_loss.view(-1, neg_logits_for_loss.size(-1)),
                     neg_targets.view(-1)
                 )
