@@ -67,12 +67,7 @@ streamlit run C:/path/to/your/app.py
 - Hugging Face for transformers infrastructure
 - Streamlit team for the intuitive framework
 - llama.cpp community for GGUF format specification
-
-- **Aditya Verma** for help in rewriting the test code and general friendly support.
 - **ChatGPT, Grok, Claude** and their developers for making this project possible.
-
-# Looking for friendly Community?
-**The CodeVerse Hub**: https://discord.gg/9Gdem4RbEf
 
 # License
 This code is generally licensed under the MIT License, with the following exceptions:
